@@ -70,7 +70,7 @@ public class ControllerMain : MonoBehaviour
     void Camera_roue_de_secours()
     {
         dataCamera.direction_cam = cam.transform.eulerAngles;
-
+        transform.eulerAngles = new Vector3(0, dataCamera.direction_cam.y, 0 );
         if(dataController.CurrentStates == States.move || timer > 0.3f)
         {
             pointYCamera.transform.position = Vector3.Lerp(pointYCamera.transform.position, dataController.destination,Time.deltaTime * 3f);
@@ -89,8 +89,9 @@ public class ControllerMain : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        velocity = Vector3.Slerp(velocity,new Vector3(InputManager.inputMove.x, 1, InputManager.inputMove.y), Time.deltaTime * 6f); 
+        velocity = Vector3.Lerp(velocity,new Vector3(InputManager.inputMove.x, 1, InputManager.inputMove.y), Time.deltaTime * 6f); 
         PhysicsCustom.DrawCircle(ref dataController.Controller_go, velocity.x , 1 , velocity.z, Color.red);
+        //PhysicsCustom.DrawCircle(ref dataController.Controller_go, 0, 1 , 1, Color.red);
         //PhysicsCustom.DrawCircle(ref dataController.Controller_go, 0, 1, 1, Color.red);
     }
 

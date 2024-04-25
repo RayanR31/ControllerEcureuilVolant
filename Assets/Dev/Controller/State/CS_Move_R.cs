@@ -15,7 +15,7 @@ public class CS_Move_R : IPlayerState
 
     public void CurrentStateUpdate(ref StructController _dataController, StructCamera _dataCamera , DataScriptableObject _data)
     {
-         _dataController.destination = Vector3.Slerp(_dataController.destination,
+         _dataController.destination = Vector3.Lerp(_dataController.destination,
              PhysicsCustom.SearchPosition(ref _dataController.Controller_go, InputManager.inputMove.x, 1, InputManager.inputMove.y, Color.red),Time.deltaTime * 6f);
        /* _dataController.destination = Vector3.Slerp(_dataController.destination,
              PhysicsCustom.SearchPosition(ref _dataController.Controller_go,0, 1, 1, Color.red), Time.deltaTime * 6f);*/
