@@ -178,6 +178,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "327c1a9e-1107-4267-809b-16df261f908d",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
                     "id": "e33c0f05-31b0-4e14-9d21-a58619caa04b",
                     "path": "Dpad",

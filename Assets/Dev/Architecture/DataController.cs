@@ -28,6 +28,7 @@ public class DataController
     [Serializable]
     public struct StructCamera
     {
+        public GameObject camera_go;
         public Vector3 direction_cam;
     }
 }
