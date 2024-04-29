@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875017379a1980548a63b8867332e623, type: 3}
-  m_Name: MoveDataController
+  m_Name: FallDataController
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   angularDrag: 0
   pourcentageMagnitude: 1
   gravity: 1

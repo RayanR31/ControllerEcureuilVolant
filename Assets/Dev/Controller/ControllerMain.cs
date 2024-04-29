@@ -22,7 +22,7 @@ public class ControllerMain : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        dataController.normal = Vector3.up; 
+        //dataController.averageNormal = Vector3.up; 
         dataController.destination = transform.position;
         InitState(); 
     }
@@ -39,9 +39,12 @@ public class ControllerMain : MonoBehaviour
         TransitionStates(); 
         dataController.Controller_go.transform.position = dataController.destination;
 
-        visual.transform.rotation = Quaternion.LookRotation(dataController.destination - visual.transform.position,transform.up);
+        if(dataController.destination - visual.transform.position != Vector3.zero && InputManager.GetInputMove() != Vector2.zero)
+        {
+            visual.transform.rotation = Quaternion.LookRotation(dataController.destination - visual.transform.position, transform.up);
+        }
 
-        visual.transform.position = Vector3.Lerp(visual.transform.position,dataController.destination,Time.deltaTime*2f);
+        visual.transform.position = Vector3.Lerp(visual.transform.position,dataController.destination,Time.deltaTime*8f);
 
         Camera_roue_de_secours();
 
@@ -50,6 +53,8 @@ public class ControllerMain : MonoBehaviour
     void InitState()
     {
         IPlayerStateArray.Add(new CS_Move_R());
+        IPlayerStateArray.Add(new CS_Jump());
+        IPlayerStateArray.Add(new CS_Fall());
     }
     void PlayStateCurrent()
     {
@@ -61,9 +66,9 @@ public class ControllerMain : MonoBehaviour
     {
         if (dataController.ChangeState)
         {
-            IPlayerStateArray[(int)dataController.CurrentStates].ExitState(dataController);
+            IPlayerStateArray[(int)dataController.CurrentStates].ExitState(ref dataController);
             dataController.CurrentStates = dataController.TargetStates;
-            IPlayerStateArray[(int)dataController.CurrentStates].EnterState(dataController);
+            IPlayerStateArray[(int)dataController.CurrentStates].EnterState(ref dataController);
             dataController.ChangeState = false;
         }
     }
@@ -76,17 +81,6 @@ public class ControllerMain : MonoBehaviour
     Vector3 pos; 
     void Camera_roue_de_secours()
     {
-        /*PhysicsCustom.normals =
-        (PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 1, 1, 0, Color.blue, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 0, 1, 1, Color.red, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 0, 1, -1, Color.gray, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, -1, 1, 0, Color.green, 30, 1) +
-
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, -0.5f, 1, 0, Color.green, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 0.5f, 1, 0, Color.green, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 0, 1, -0.5f, Color.green, 30, 1) +
-        PhysicsCustom.CalculNormal(ref dataController.Controller_go, dataCamera, 0, 1, 0.5f, Color.green, 30, 1)) 
-        / 4;*/
         dataCamera.direction_cam = cam.transform.eulerAngles;
         if(dataController.CurrentStates == States.move || timer > 0.3f)
         {
@@ -106,22 +100,9 @@ public class ControllerMain : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        velocity = Vector3.Lerp(velocity,new Vector3(InputManager.inputMove.x, 1, InputManager.inputMove.y), Time.deltaTime * 6f); 
-        PhysicsCustom.DrawCircle(ref dataController.Controller_go,dataCamera ,velocity.x , 1 , velocity.z, Color.red , 30 ,1 );
-      //  PhysicsCustom.DrawCirclesAroundPlayer(dataController.Controller_go, 1, 1, 0, Color.cyan);
+       // velocity = Vector3.Slerp(velocity,new Vector3(InputManager.inputMove.x, 1, InputManager.inputMove.y), Time.deltaTime * 6f); 
 
-        /* PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 1, 1 , 0, Color.blue);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 0, 1 , 1, Color.red);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 0, 1 , -1, Color.gray);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, -1, 1, 0, Color.green);
-
-
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, -0.5f, 1, 0, Color.yellow);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 0.5f, 1, 0, Color.yellow);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 0, 1, -0.5f, Color.yellow);
-         PhysicsCustom.DrawCircle(ref dataController.Controller_go, dataCamera, 0, 1, 0.5f, Color.yellow);*/
-
-
+     // PhysicsCustom.DrawCircle(ref dataController.Controller_go,dataCamera ,velocity.x , 1 , velocity.z, Color.magenta , 30 ,1 );
     }
 
 }

@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class InputManager : MonoBehaviour
 {
     public static Vector2 inputMove;
-    public static bool inputJump;
+    public static bool inputJump = false;
     public static bool inputCancel;
 
     public void SetInputMove(InputAction.CallbackContext context)
@@ -26,6 +25,17 @@ public class InputManager : MonoBehaviour
         {
             inputJump = true;
         }
+    }
+
+    public static bool GetInputJump()
+    {
+        return inputJump;
+    }
+
+    public static bool CancelInputJump()
+    {
+        inputJump = false;
+        return inputJump;
     }
 
     public void SetInputCancel(InputAction.CallbackContext context)

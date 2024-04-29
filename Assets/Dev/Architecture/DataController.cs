@@ -9,6 +9,8 @@ public class DataController
     public enum States
     {
         move,
+        jump,
+        fall
     }
 
     [Serializable]
@@ -19,7 +21,7 @@ public class DataController
         public States TargetStates;
         public Vector3 destination;
         public Vector3 direction;
-        public Vector3 normal;
+        public Vector3 averageNormal;
         public float currentSpeed;
         public float currentVelocity;
         public bool ChangeState;
