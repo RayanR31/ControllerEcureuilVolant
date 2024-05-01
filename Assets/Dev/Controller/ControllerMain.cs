@@ -45,7 +45,7 @@ public class ControllerMain : MonoBehaviour
 
 
 
-        visual.transform.position = Vector3.Lerp(visual.transform.position,dataController.destination,Time.deltaTime*8f);
+        visual.transform.position = Vector3.Lerp(visual.transform.position,dataController.destination,Time.deltaTime*100f);
 
         Camera();
         Character(); 

@@ -7,11 +7,12 @@ using static DataController;
 public class CS_Jump : IPlayerState
 {
     public GS_Jump changeStateMove = new GS_Jump();
-    private float timerCancelJump;
-    private float currentGravity; 
+    private float currentGravity;
+    float t = 0 ;
     public void EnterState(ref StructController _dataController)
     {
-        timerCancelJump = 0; 
+        t = 0;
+        //_dataController.direction = Vector3.zero;
         //InputManager.CancelInputJump();
     }
 
@@ -19,23 +20,21 @@ public class CS_Jump : IPlayerState
     {
         PhysicsCustom.CalculNormal(ref _dataController, _dataCamera, 1f);
         Vector3 input = new Vector3(InputManager.GetInputMove().x , 0, InputManager.GetInputMove().y ) * _data.pourcentageMagnitude;
-        _dataController.direction = Vector3.Slerp(_dataController.direction, _dataController.Controller_go.transform.rotation * input, Time.fixedDeltaTime * _data.angularDrag);
+        _dataController.direction = Vector3.Lerp(_dataController.direction, input, Time.fixedDeltaTime * _data.angularDrag);
 
         GestionGravityY(_data);
-        _dataController.direction += _dataController.Controller_go.transform.rotation * new Vector3(0, currentGravity * _data.curve.Evaluate(-Time.time) * Time.deltaTime, 0);
 
-
-        _dataController.destination += _dataController.direction * _data.speed * Time.fixedDeltaTime;
-
-        if (timerCancelJump > 0.3f)
+        _dataController.destination += _dataController.Controller_go.transform.rotation * new Vector3(_dataController.direction.x, currentGravity * _data.curve.Evaluate(ratioT()), _dataController.direction.z) * Time.deltaTime; 
+        if (t > 0.3f)
         {
-            PhysicsCustom.CheckWall(ref _dataController);
+           // PhysicsCustom.CheckWall(ref _dataController);
         }
     }
 
     public void ExitState(ref StructController _dataController)
     {
-        _dataController.direction = Vector3.zero; 
+        //_dataController.direction = Vector3.zero;
+        t = 0;
     }
 
     public void ChangeStateByInput(ref StructController _dataController)
@@ -50,12 +49,11 @@ public class CS_Jump : IPlayerState
 
     public void ChangeStateByNature(ref StructController _dataController, StructCamera _dataCamera)
     {
-        timerCancelJump += Time.deltaTime;    
         CancelJump(ref _dataController);
     }
     void CancelJump(ref StructController _dataController)
     {
-        if(timerCancelJump > 0.5f)
+        if(t > 1f)
         {
             _dataController.TargetStates = States.fall;
             _dataController.ChangeState = true;
@@ -64,5 +62,11 @@ public class CS_Jump : IPlayerState
     void GestionGravityY(DataScriptableObject _data)
     {
         currentGravity = _data.gravity - (InputManager.GetInputMagnitude() * _data.temp);
+    }
+    float ratioT()
+    {
+        if(t < 1) t += Time.deltaTime * 5.5f;
+
+        return t; 
     }
 }

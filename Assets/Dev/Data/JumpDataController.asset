@@ -12,49 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875017379a1980548a63b8867332e623, type: 3}
   m_Name: JumpDataController
   m_EditorClassIdentifier: 
-  speed: 8.32
+  speed: 3
   angularDrag: 5
-  pourcentageMagnitude: 5
-  gravity: 10
+  pourcentageMagnitude: 50
+  gravity: 20
   temp: 5
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -0.3855243
-      outSlope: -0.3855243
-      tangentMode: 34
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.87370217
-      value: 0.6631666
-      inSlope: -0.92629176
-      outSlope: -0.92629176
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.15319191
-      outWeight: 0.8680369
-    - serializedVersion: 3
-      time: 0.9752791
-      value: 0.4515609
-      inSlope: -1.5646214
-      outSlope: -1.5646214
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.832711
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -18.266357
-      outSlope: -18.266357
-      tangentMode: 34
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

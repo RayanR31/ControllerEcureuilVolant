@@ -12,31 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875017379a1980548a63b8867332e623, type: 3}
   m_Name: FallDataController
   m_EditorClassIdentifier: 
-  speed: 16
+  speed: 10
   angularDrag: 4
-  pourcentageMagnitude: 1
-  gravity: 15
+  pourcentageMagnitude: 10
+  gravity: 10
   temp: 0
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -0.026794666
+      outSlope: -0.026794666
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.70416665
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      value: 0
+      inSlope: -2.3113203
+      outSlope: -2.3113203
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.050000012
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
