@@ -10,33 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875017379a1980548a63b8867332e623, type: 3}
-  m_Name: FallDataController
+  m_Name: GlideDataController
   m_EditorClassIdentifier: 
-  speed: 16
+  speed: 15
   angularDrag: 4
   pourcentageMagnitude: 1
-  gravity: 15
+  gravity: 3
   temp: 0
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -2.3061397
+      outSlope: -2.3061397
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.27107635
+    - serializedVersion: 3
+      time: 0.19982071
+      value: 0.4345252
+      inSlope: -1.7283589
+      outSlope: -1.7283589
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.39529127
+      outWeight: 0.14593874
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      value: 0
+      inSlope: 0.008815471
+      outSlope: 0.008815471
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.4583333
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

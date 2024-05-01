@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875017379a1980548a63b8867332e623, type: 3}
   m_Name: MoveDataController
   m_EditorClassIdentifier: 
-  speed: 20
-  angularDrag: 0
+  speed: 15
+  angularDrag: 10
   pourcentageMagnitude: 1
   gravity: 1
+  temp: 0
   curve:
     serializedVersion: 2
     m_Curve: []

@@ -9,5 +9,6 @@ public class DataScriptableObject : ScriptableObject
     public float angularDrag;
     public float pourcentageMagnitude = 1;
     public float gravity = 1;
+    public float temp = 0;
     public AnimationCurve curve;
 }

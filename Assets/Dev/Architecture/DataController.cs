@@ -10,7 +10,8 @@ public class DataController
     {
         move,
         jump,
-        fall
+        fall,
+        glide
     }
 
     [Serializable]
@@ -22,8 +23,8 @@ public class DataController
         public Vector3 destination;
         public Vector3 direction;
         public Vector3 averageNormal;
+        public Vector3 currentVelocity;
         public float currentSpeed;
-        public float currentVelocity;
         public bool ChangeState;
     }
 

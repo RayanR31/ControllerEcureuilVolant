@@ -106,51 +106,21 @@ public class PhysicsCustom
 
     }
 
-    public static float CurrentForceCollision = 15;
-    public static void Check(ref StructController _dataController)
+    public static void CheckWall(ref StructController _dataController)
     {
-        Debug.DrawRay(_dataController.destination, _dataController.direction * 5f, Color.magenta);
+        //Debug.DrawRay(_dataController.destination, _dataController.direction * 2f, Color.magenta);
 
-        if (Physics.CheckSphere(_dataController.Controller_go.transform.position,1.1f))
+        if (Physics.CheckSphere(_dataController.Controller_go.transform.position, 0.5f))
         {
-                if (_dataController.CurrentStates == States.fall)
-                {
-                    _dataController.TargetStates = States.move;
-                    _dataController.ChangeState = true;
-                }
+            _dataController.TargetStates = States.move;
+            _dataController.ChangeState = true;
         }
-    }
-    public void CheckWall(ref StructController _dataController, ref float speed)
-    {
-        Vector3[] directionsWorld = {
-                -Vector3.forward,
-               Vector3.forward,
-               Vector3.up,
-               -Vector3.up
-               , Vector3.right, Vector3.left};
 
-        float[] sizes = { 1f, 1f, 2f, 1f, 1f, 1f };
-
-        CurrentForceCollision = (speed / 10) * 15;
-        // Parcours chaque direction pour détecter les collisions avec les murs
-        for (int i = 0; i < directionsWorld.Length; i++)
+      /* if (Physics.Raycast(_dataController.destination, _dataController.direction, out RaycastHit hit, 2f))
         {
-            RaycastHit hit;
-
-            // Vérifie s'il y a une collision dans la direction actuelle
-            if (Physics.SphereCast(_dataController.destination, 0.5f, Quaternion.LookRotation(_dataController.direction) * directionsWorld[i], out hit, sizes[i], 1 << 0 | 1 << 7))
-            {
-                //  _dataController.destination += (hit.normal * CurrentForceCollision * Time.fixedDeltaTime); // 15 valeur ok && 1 de distance
-                Debug.Log(Vector3.Dot(_dataController.direction, Vector3.forward));
-
-                _dataController.destination += (hit.normal * CurrentForceCollision * Time.fixedDeltaTime); // 15 valeur ok && 1 de distance
-
-                //  Debug.DrawLine(_dataController.destination, hit.point, Color.red);
-            }
-            else
-            {
-                Debug.DrawRay(_dataController.destination, Quaternion.LookRotation(_dataController.direction) * directionsWorld[i] * sizes[i], Color.green);
-            }
-        }
+            _dataController.destination = hit.point;
+            _dataController.TargetStates = States.move;
+            _dataController.ChangeState = true;
+        }*/
     }
 }
