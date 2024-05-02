@@ -7,16 +7,20 @@ using static UnityEditor.PlayerSettings;
 public class CameraMain : MonoBehaviour
 {
 
-    [SerializeField] public StructCamera dataCamera = new StructCamera();
+    [SerializeField] private StructCamera dataCamera = new StructCamera();
 
 
-    [Header("TEMPORARY - Camera - Character")]
+    [Header("Camera")]
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject pointYCamera;
     private float timer;
     private Vector3 pos;
-    public GameObject cam;
-    public GameObject visual;
-    public GameObject pointYCamera;
-    public GameObject[] ailes;
+
+    [Header("Character")]
+    [SerializeField] private GameObject visual;
+    [SerializeField] private GameObject[] ailes;
+
+
     // Start is called before the first frame update
     void Start()
     {

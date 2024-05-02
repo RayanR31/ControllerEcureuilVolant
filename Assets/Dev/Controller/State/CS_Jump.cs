@@ -12,10 +12,7 @@ public class CS_Jump : IPlayerState
     public void EnterState(ref StructController _dataController)
     {
         t = 0;
-        //_dataController.direction = Vector3.zero;
-        //InputManager.CancelInputJump();
     }
-
     public void CurrentStateUpdate(ref StructController _dataController, StructCamera _dataCamera, DataScriptableObject _data)
     {
         PhysicsCustom.CalculNormal(ref _dataController, _dataCamera, 1f);
@@ -25,18 +22,11 @@ public class CS_Jump : IPlayerState
         GestionGravityY(_data);
 
         _dataController.destination += _dataController.Controller_go.transform.rotation * new Vector3(_dataController.direction.x, currentGravity * _data.curve.Evaluate(ratioT()), _dataController.direction.z) * Time.deltaTime; 
-        if (t > 0.3f)
-        {
-           // PhysicsCustom.CheckWall(ref _dataController);
-        }
     }
-
     public void ExitState(ref StructController _dataController)
     {
-        //_dataController.direction = Vector3.zero;
         t = 0;
     }
-
     public void ChangeStateByInput(ref StructController _dataController)
     {
         if (InputManager.GetInputGlide() == true)
@@ -46,9 +36,14 @@ public class CS_Jump : IPlayerState
             InputManager.GetInputGlide();
         }
     }
-
     public void ChangeStateByNature(ref StructController _dataController, StructCamera _dataCamera)
     {
+        if (t > 0.6f && PhysicsCustom.CheckWall(ref _dataController,0.5f))
+        {
+            _dataController.TargetStates = States.move;
+            _dataController.ChangeState = true;
+        }
+
         CancelJump(ref _dataController);
     }
     void CancelJump(ref StructController _dataController)

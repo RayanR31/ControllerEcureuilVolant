@@ -7,11 +7,11 @@ using static DataController;
 public class ControllerMain : MonoBehaviour
 {
 
-    [SerializeField] public StructController dataController = new StructController(); 
+    [SerializeField] private StructController dataController = new StructController();
 
-    public List<IPlayerState> IPlayerStateArray = new List<IPlayerState>();
+    [SerializeField] private List<IPlayerState> IPlayerStateArray = new List<IPlayerState>();
 
-    public List<DataScriptableObject> DataScriptableObjectList = new List<DataScriptableObject>();
+    [SerializeField] private List<DataScriptableObject> DataScriptableObjectList = new List<DataScriptableObject>();
 
 
     // Start is called before the first frame update
