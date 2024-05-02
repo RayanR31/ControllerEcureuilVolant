@@ -1008,7 +1008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0088032875, y: 0.98717064, z: -0.058615725, w: 0.14825964}
+  m_LocalRotation: {x: 0.008803287, y: 0.98717064, z: -0.058615725, w: 0.14825964}
   m_LocalPosition: {x: -4.489955, y: 68.45, z: 3.454132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1223,7 +1223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398767108}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011498604, y: 0.9859411, z: -0.07656218, w: 0.14807503}
+  m_LocalRotation: {x: 0.011498597, y: 0.9859411, z: -0.07656215, w: 0.148075}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1617,6 +1617,7 @@ Transform:
   - {fileID: 1028000559}
   - {fileID: 1489436365}
   - {fileID: 1130886949}
+  - {fileID: 1169486891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484447997
@@ -4264,6 +4265,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1169486890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1169486891}
+  - component: {fileID: 1169486892}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1169486891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169486890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 426195611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1169486892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169486890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c6e948dec37824dbcfcf0a7170d119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataController:
+    Controller_go: {fileID: 0}
+    CurrentStates: 0
+    TargetStates: 0
+    destination: {x: 0, y: 0, z: 0}
+    direction: {x: 0, y: 0, z: 0}
+    averageNormal: {x: 0, y: 0, z: 0}
+    currentVelocity: {x: 0, y: 0, z: 0}
+    currentSpeed: 0
+    ChangeState: 0
+  dataCamera:
+    camera_go: {fileID: 0}
+    direction_cam: {x: 0, y: 0, z: 0}
 --- !u!1 &1186405437
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,6 +4858,7 @@ GameObject:
   - component: {fileID: 1489436365}
   - component: {fileID: 1489436367}
   - component: {fileID: 1489436368}
+  - component: {fileID: 1489436369}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4967,14 +5026,26 @@ MonoBehaviour:
     currentVelocity: {x: 0, y: 0, z: 0}
     currentSpeed: 0
     ChangeState: 0
-  dataCamera:
-    camera_go: {fileID: 330585543}
-    direction_cam: {x: 0, y: 0, z: 0}
   DataScriptableObjectList:
   - {fileID: 11400000, guid: 35e04e36f53320f4fb200d43a0ce8814, type: 2}
   - {fileID: 11400000, guid: 52ffa42865382ed41b38ea8395d4ec79, type: 2}
   - {fileID: 11400000, guid: 1fd0bc73ce1b84147bcdb0a9df3ec9e4, type: 2}
   - {fileID: 11400000, guid: 883abc1fbb575f341b77eb899d0828ac, type: 2}
+--- !u!114 &1489436369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489436364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f397d31d24e3145b65b0bf6b4ac04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataCamera:
+    camera_go: {fileID: 0}
+    direction_cam: {x: 0, y: 0, z: 0}
   cam: {fileID: 330585543}
   visual: {fileID: 1511507582}
   pointYCamera: {fileID: 1028000558}
@@ -5179,7 +5250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738275379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0088032875, y: 0.98717064, z: -0.058615718, w: 0.14825965}
+  m_LocalRotation: {x: 0.008803285, y: 0.98717064, z: -0.058615718, w: 0.14825964}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
